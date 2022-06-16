@@ -1,7 +1,7 @@
-import { View, Text, TextInput } from 'react-native'
+import { View, Text, TextInput, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import { Ionicons } from '@expo/vector-icons'
-import Constant from 'expo-constants'
+import MiniCard from '../components/MiniCard'
 
 export default function Search() {
   const [text, setText] = useState('')
@@ -25,6 +25,17 @@ export default function Search() {
         />
         <Ionicons name='md-send' size={32} />
       </View>
+      <ScrollView>
+        <MiniCard />
+        <MiniCard />
+        <MiniCard />
+        <MiniCard />
+        <MiniCard />
+        <MiniCard />
+        <MiniCard />
+        <MiniCard />
+        <MiniCard />
+      </ScrollView>
     </View>
   )
 }
