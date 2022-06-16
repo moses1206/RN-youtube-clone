@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View } from 'react-native'
 import { AntDesign, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
-import Constant from 'expo-constants'
 
 export default function Home() {
   const mycolor = '#212121'
@@ -9,7 +8,6 @@ export default function Home() {
   return (
     <View
       style={{
-        marginTop: Constant.statusBarHeight,
         height: 45,
         backgroundColor: 'white',
         flexDirection: 'row',
