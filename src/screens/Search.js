@@ -13,7 +13,7 @@ import Constant from 'expo-constants'
 
 import { GOOGLE_YOUTUBE_API_KEY } from '@env'
 
-export default function Search() {
+export default function Search({ navigation }) {
   const [text, setText] = useState('')
   const [miniCardData, setMiniCardData] = useState([])
   const [loading, setLoading] = useState(false)
@@ -41,7 +41,11 @@ export default function Search() {
           backgroundColor: 'white',
         }}
       >
-        <Ionicons name='md-arrow-back' size={32} />
+        <Ionicons
+          name='md-arrow-back'
+          size={32}
+          onPress={() => navigation.goBack()}
+        />
         <TextInput
           style={{ backgroundColor: '#e6e6e6', width: '70%' }}
           onChangeText={(text) => setText(text)}
