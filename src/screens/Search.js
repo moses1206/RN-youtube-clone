@@ -9,8 +9,9 @@ import {
 import React, { useState } from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import MiniCard from '../components/MiniCard'
-import dotenv from 'dotenv'
-dotenv.config()
+import Constant from 'expo-constants'
+
+import { GOOGLE_YOUTUBE_API_KEY } from '@env'
 
 export default function Search() {
   const [text, setText] = useState('')
@@ -20,7 +21,7 @@ export default function Search() {
   const fetchData = () => {
     setLoading(true)
     fetch(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${text}&type=video&key=${process.env.GOOGLE_YOUTUBE_API_KEY}`
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${text}&type=video&key=${GOOGLE_YOUTUBE_API_KEY}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -30,7 +31,7 @@ export default function Search() {
   }
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, marginTop: Constant.statusBarHeight }}>
       <View
         style={{
           padding: 5,
