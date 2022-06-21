@@ -13,8 +13,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import { Provider } from 'react-redux'
-import store from './src/store'
-import { reducer } from './src/reducers'
+import { createStore } from 'redux'
+import { reducer } from './src/reducers/reducer'
+
+const store = createStore(reducer)
 
 const Stack = createNativeStackNavigator()
 const Tabs = createBottomTabNavigator()

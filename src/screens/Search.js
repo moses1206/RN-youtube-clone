@@ -10,12 +10,17 @@ import React, { useState } from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import MiniCard from '../components/MiniCard'
 import Constant from 'expo-constants'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { GOOGLE_YOUTUBE_API_KEY } from '@env'
 
 export default function Search({ navigation }) {
   const [text, setText] = useState('')
-  const [miniCardData, setMiniCardData] = useState([])
+  // const [miniCardData, setMiniCardData] = useState([])
+  const miniCardData = useSelector((state) => {
+    return state
+  })
+  const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
 
   const fetchData = () => {
@@ -25,8 +30,10 @@ export default function Search({ navigation }) {
     )
       .then((res) => res.json())
       .then((data) => {
-        setMiniCardData(data.items)
+        // setMiniCardData(data.items)
         setLoading(false)
+        dispatch({ type: 'add', payload: data.items })
+        console.log(data.items)
       })
   }
 

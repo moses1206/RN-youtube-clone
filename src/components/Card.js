@@ -2,12 +2,12 @@ import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View, Image, Dimensions } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
-export default function Card() {
+export default function Card(props) {
   return (
-    <View style={{ marginBottom: 10 }}>
+    <View style={{ marginBottom: 10 }} onPress={() => console.log(props)}>
       <Image
         source={{
-          uri: 'https://images.unsplash.com/photo-1638913665258-ddd2bceafb30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+          uri: `https://i.ytimg.com/vi/${props.videoId}/hqdefault.jpg`,
         }}
         style={{ width: '100%', height: 200 }}
       />
@@ -23,9 +23,9 @@ export default function Card() {
             ellipsizeMode='tail'
             numberOfLines={2}
           >
-            this is amazing course dslfjdslfldsfjlsdddddddddddddddd das
+            {props.title}
           </Text>
-          <Text>this is amazing course</Text>
+          <Text>{props.channel}</Text>
         </View>
       </View>
     </View>
