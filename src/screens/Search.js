@@ -33,7 +33,6 @@ export default function Search({ navigation }) {
         // setMiniCardData(data.items)
         setLoading(false)
         dispatch({ type: 'add', payload: data.items })
-        console.log(data.items)
       })
   }
 
