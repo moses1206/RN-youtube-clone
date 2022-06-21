@@ -7,10 +7,12 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import React from 'react'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useTheme } from '@react-navigation/native'
 
 export default function MiniCard(props) {
   const navigation = useNavigation()
+  const { colors } = useTheme()
+  const textColor = colors.iconColor
 
   return (
     <TouchableOpacity
@@ -30,14 +32,22 @@ export default function MiniCard(props) {
         />
         <View style={{ paddingLeft: 7 }}>
           <Text
-            style={{ fontSize: 17, width: Dimensions.get('screen').width / 2 }}
+            style={{
+              fontSize: 17,
+              width: Dimensions.get('screen').width / 2,
+              color: textColor,
+            }}
             ellipsizeMode='tail'
             numberOfLines={3}
           >
             {props.title}
           </Text>
           <Text
-            style={{ fontSize: 12, width: Dimensions.get('screen').width / 2 }}
+            style={{
+              fontSize: 12,
+              width: Dimensions.get('screen').width / 2,
+              color: textColor,
+            }}
             ellipsizeMode='tail'
             numberOfLines={1}
           >

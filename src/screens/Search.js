@@ -11,10 +11,14 @@ import { Ionicons } from '@expo/vector-icons'
 import MiniCard from '../components/MiniCard'
 import Constant from 'expo-constants'
 import { useSelector, useDispatch } from 'react-redux'
+import { useTheme } from '@react-navigation/native'
 
 import { GOOGLE_YOUTUBE_API_KEY } from '@env'
 
 export default function Search({ navigation }) {
+  const { colors } = useTheme()
+  const mycolor = colors.iconColor
+
   const [text, setText] = useState('')
   // const [miniCardData, setMiniCardData] = useState([])
   const miniCardData = useSelector((state) => {
@@ -44,10 +48,11 @@ export default function Search({ navigation }) {
           flexDirection: 'row',
           justifyContent: 'space-around',
           elevation: 5,
-          backgroundColor: 'white',
+          backgroundColor: colors.headerColor,
         }}
       >
         <Ionicons
+          style={{ color: mycolor }}
           name='md-arrow-back'
           size={32}
           onPress={() => navigation.goBack()}
@@ -57,7 +62,12 @@ export default function Search({ navigation }) {
           onChangeText={(text) => setText(text)}
           value={text}
         />
-        <Ionicons name='md-send' size={32} onPress={() => fetchData()} />
+        <Ionicons
+          style={{ color: mycolor }}
+          name='md-send'
+          size={32}
+          onPress={() => fetchData()}
+        />
       </View>
 
       {loading ? (

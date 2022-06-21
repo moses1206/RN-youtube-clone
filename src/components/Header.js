@@ -1,17 +1,18 @@
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View } from 'react-native'
 import { AntDesign, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useTheme } from '@react-navigation/native'
 
 export default function Home() {
   const navigation = useNavigation()
-  const mycolor = '#212121'
+  const { colors } = useTheme()
+  const mycolor = colors.iconColor
 
   return (
     <View
       style={{
         height: 45,
-        backgroundColor: 'white',
+        backgroundColor: colors.headerColor,
         flexDirection: 'row',
         justifyContent: 'space-between',
         elevation: 4,
@@ -58,7 +59,7 @@ export default function Home() {
         <MaterialCommunityIcons
           name='account-circle'
           size={32}
-          color='#212121'
+          color={mycolor}
         />
       </View>
     </View>

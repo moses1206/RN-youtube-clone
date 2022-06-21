@@ -8,10 +8,12 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useTheme } from '@react-navigation/native'
 
 export default function Card(props) {
   const navigation = useNavigation()
+  const { colors } = useTheme()
+  const textColor = colors.iconColor
 
   return (
     <TouchableOpacity
@@ -33,20 +35,27 @@ export default function Card(props) {
           <MaterialCommunityIcons
             name='account-circle'
             size={40}
-            color='#212121'
+            color={textColor}
           />
           <View style={{ marginLeft: 10 }}>
             <Text
               style={{
                 fontSize: 20,
                 width: Dimensions.get('screen').width - 50,
+                color: textColor,
               }}
               ellipsizeMode='tail'
               numberOfLines={2}
             >
               {props.title}
             </Text>
-            <Text>{props.channel}</Text>
+            <Text
+              style={{
+                color: textColor,
+              }}
+            >
+              {props.channel}
+            </Text>
           </View>
         </View>
       </View>
