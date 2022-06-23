@@ -22,7 +22,7 @@ export default function Search({ navigation }) {
   const [text, setText] = useState('')
   // const [miniCardData, setMiniCardData] = useState([])
   const miniCardData = useSelector((state) => {
-    return state
+    return state.cardData
   })
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)

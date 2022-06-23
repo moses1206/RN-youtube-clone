@@ -2,11 +2,16 @@ import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View } from 'react-native'
 import { AntDesign, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { useNavigation, useTheme } from '@react-navigation/native'
+import { useDispatch, useSelector } from 'react-redux'
 
 export default function Home() {
   const navigation = useNavigation()
+  const dispatch = useDispatch()
   const { colors } = useTheme()
   const mycolor = colors.iconColor
+  const currentTheme = useSelector((state) => {
+    return state.myDarkMode
+  })
 
   return (
     <View
@@ -60,6 +65,9 @@ export default function Home() {
           name='account-circle'
           size={32}
           color={mycolor}
+          onPress={() =>
+            dispatch({ type: 'change_theme', payload: !currentTheme })
+          }
         />
       </View>
     </View>
